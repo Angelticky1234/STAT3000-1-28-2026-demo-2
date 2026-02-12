@@ -112,9 +112,17 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#instructionssetup" id="toc-instructionssetup" class="nav-link active" data-scroll-target="#instructionssetup"><span class="header-section-number">1</span> Instructions/Setup</a></li>
-  <li><a href="#tasks" id="toc-tasks" class="nav-link" data-scroll-target="#tasks"><span class="header-section-number">2</span> Tasks</a></li>
-  <li><a href="#submission-checklist" id="toc-submission-checklist" class="nav-link" data-scroll-target="#submission-checklist"><span class="header-section-number">3</span> Submission checklist</a></li>
+  <li><a href="#instructionssetup" id="toc-instructionssetup" class="nav-link active" data-scroll-target="#instructionssetup"><span class="header-section-number">0.1</span> Instructions/Setup</a></li>
+  <li><a href="#tasks" id="toc-tasks" class="nav-link" data-scroll-target="#tasks"><span class="header-section-number">0.2</span> Tasks</a></li>
+  <li><a href="#verify-the-file-was-created" id="toc-verify-the-file-was-created" class="nav-link" data-scroll-target="#verify-the-file-was-created"><span class="header-section-number">1</span> Verify the file was created</a></li>
+  <li><a href="#verify-the-copy" id="toc-verify-the-copy" class="nav-link" data-scroll-target="#verify-the-copy"><span class="header-section-number">2</span> Verify the copy</a></li>
+  <li><a href="#assign-coefficients" id="toc-assign-coefficients" class="nav-link" data-scroll-target="#assign-coefficients"><span class="header-section-number">3</span> Assign coefficients</a></li>
+  <li><a href="#display-the-coefficients" id="toc-display-the-coefficients" class="nav-link" data-scroll-target="#display-the-coefficients"><span class="header-section-number">4</span> Display the coefficients</a></li>
+  <li><a href="#calculate-discriminant" id="toc-calculate-discriminant" class="nav-link" data-scroll-target="#calculate-discriminant"><span class="header-section-number">5</span> Calculate discriminant</a></li>
+  <li><a href="#check-discriminant-and-print-real-roots" id="toc-check-discriminant-and-print-real-roots" class="nav-link" data-scroll-target="#check-discriminant-and-print-real-roots"><span class="header-section-number">6</span> Check discriminant and print real roots</a>
+  <ul class="collapse">
+  <li><a href="#submission-checklist" id="toc-submission-checklist" class="nav-link" data-scroll-target="#submission-checklist"><span class="header-section-number">6.1</span> Submission checklist</a></li>
+  </ul></li>
   </ul>
 </nav>
 </div>
@@ -145,8 +153,8 @@ window.Quarto = {
 </header>
 
 
-<section id="instructionssetup" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="instructionssetup"><span class="header-section-number">1</span> Instructions/Setup</h2>
+<section id="instructionssetup" class="level2" data-number="0.1">
+<h2 data-number="0.1" class="anchored" data-anchor-id="instructionssetup"><span class="header-section-number">0.1</span> Instructions/Setup</h2>
 <p><a href="https://raw.githubusercontent.com/ywanglab/STAT3000/refs/heads/main/psets/hw1.qmd">Download source</a></p>
 <ul>
 <li><p>Make sure you have a GitHub account. In your GitHub account, create a GitHub repository named <code>STAT3000</code>.</p></li>
@@ -155,8 +163,8 @@ window.Quarto = {
 <li><p>Answer each item <strong>inside this Quarto file</strong>. Show commands/code where requested.</p></li>
 </ul>
 </section>
-<section id="tasks" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="tasks"><span class="header-section-number">2</span> Tasks</h2>
+<section id="tasks" class="level2" data-number="0.2">
+<h2 data-number="0.2" class="anchored" data-anchor-id="tasks"><span class="header-section-number">0.2</span> Tasks</h2>
 <ol start="0" type="1">
 <li><p><strong>Project folders</strong><br>
 In your project root, create the folders: <code>hw/</code>, <code>img/</code>, <code>data/</code>, <code>code/</code>, <code>docs/</code>.<br>
@@ -171,32 +179,196 @@ mkdir img
 mkdir data
 mkdir code
 mkdir docs</code></pre></li>
+</ol>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Or create them one by one</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="st">"hw"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dir.create("hw"): 'hw' already exists</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="st">"img"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dir.create("img"): 'img' already exists</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="st">"data"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dir.create("data"): 'data' already exists</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="st">"code"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dir.create("code"): 'code' already exists</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="st">"docs"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dir.create("docs"): 'docs' already exists</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Verify the directories were created</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">list.dirs</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  [1] "."                                                                   
+  [2] "./.git"                                                              
+  [3] "./.git/hooks"                                                        
+  [4] "./.git/info"                                                         
+  [5] "./.git/logs"                                                         
+  [6] "./.git/logs/refs"                                                    
+  [7] "./.git/logs/refs/heads"                                              
+  [8] "./.git/logs/refs/remotes"                                            
+  [9] "./.git/logs/refs/remotes/origin"                                     
+ [10] "./.git/objects"                                                      
+ [11] "./.git/objects/00"                                                   
+ [12] "./.git/objects/11"                                                   
+ [13] "./.git/objects/14"                                                   
+ [14] "./.git/objects/19"                                                   
+ [15] "./.git/objects/1a"                                                   
+ [16] "./.git/objects/1f"                                                   
+ [17] "./.git/objects/21"                                                   
+ [18] "./.git/objects/29"                                                   
+ [19] "./.git/objects/3a"                                                   
+ [20] "./.git/objects/43"                                                   
+ [21] "./.git/objects/4c"                                                   
+ [22] "./.git/objects/51"                                                   
+ [23] "./.git/objects/57"                                                   
+ [24] "./.git/objects/59"                                                   
+ [25] "./.git/objects/5a"                                                   
+ [26] "./.git/objects/5b"                                                   
+ [27] "./.git/objects/6f"                                                   
+ [28] "./.git/objects/75"                                                   
+ [29] "./.git/objects/76"                                                   
+ [30] "./.git/objects/77"                                                   
+ [31] "./.git/objects/7b"                                                   
+ [32] "./.git/objects/7f"                                                   
+ [33] "./.git/objects/82"                                                   
+ [34] "./.git/objects/84"                                                   
+ [35] "./.git/objects/87"                                                   
+ [36] "./.git/objects/88"                                                   
+ [37] "./.git/objects/8e"                                                   
+ [38] "./.git/objects/a4"                                                   
+ [39] "./.git/objects/c2"                                                   
+ [40] "./.git/objects/c9"                                                   
+ [41] "./.git/objects/ca"                                                   
+ [42] "./.git/objects/e2"                                                   
+ [43] "./.git/objects/e3"                                                   
+ [44] "./.git/objects/e6"                                                   
+ [45] "./.git/objects/e7"                                                   
+ [46] "./.git/objects/e8"                                                   
+ [47] "./.git/objects/ea"                                                   
+ [48] "./.git/objects/f1"                                                   
+ [49] "./.git/objects/info"                                                 
+ [50] "./.git/objects/pack"                                                 
+ [51] "./.git/refs"                                                         
+ [52] "./.git/refs/heads"                                                   
+ [53] "./.git/refs/remotes"                                                 
+ [54] "./.git/refs/remotes/origin"                                          
+ [55] "./.git/refs/tags"                                                    
+ [56] "./.Rproj.user"                                                       
+ [57] "./.Rproj.user/5B1AA211"                                              
+ [58] "./.Rproj.user/5B1AA211/bibliography-index"                           
+ [59] "./.Rproj.user/5B1AA211/ctx"                                          
+ [60] "./.Rproj.user/5B1AA211/explorer-cache"                               
+ [61] "./.Rproj.user/5B1AA211/jobs"                                         
+ [62] "./.Rproj.user/5B1AA211/pcs"                                          
+ [63] "./.Rproj.user/5B1AA211/presentation"                                 
+ [64] "./.Rproj.user/5B1AA211/profiles-cache"                               
+ [65] "./.Rproj.user/5B1AA211/quarto-crossref"                              
+ [66] "./.Rproj.user/5B1AA211/sources"                                      
+ [67] "./.Rproj.user/5B1AA211/sources/per"                                  
+ [68] "./.Rproj.user/5B1AA211/sources/per/t"                                
+ [69] "./.Rproj.user/5B1AA211/sources/per/u"                                
+ [70] "./.Rproj.user/5B1AA211/sources/prop"                                 
+ [71] "./.Rproj.user/5B1AA211/sources/session-43971750"                     
+ [72] "./.Rproj.user/5B1AA211/tutorial"                                     
+ [73] "./.Rproj.user/5B1AA211/unsaved-notebooks"                            
+ [74] "./.Rproj.user/5B1AA211/unsaved-notebooks/652C564B"                   
+ [75] "./.Rproj.user/5B1AA211/viewer-cache"                                 
+ [76] "./.Rproj.user/shared"                                                
+ [77] "./.Rproj.user/shared/notebooks"                                      
+ [78] "./.Rproj.user/shared/notebooks/0BF3A38F-quadratic.qmd"               
+ [79] "./.Rproj.user/shared/notebooks/0BF3A38F-quadratic.qmd/1"             
+ [80] "./.Rproj.user/shared/notebooks/0BF3A38F-quadratic.qmd/1/s"           
+ [81] "./.Rproj.user/shared/notebooks/0C5D29F2-HW1"                         
+ [82] "./.Rproj.user/shared/notebooks/0C5D29F2-HW1/1"                       
+ [83] "./.Rproj.user/shared/notebooks/0C5D29F2-HW1/1/5B1AA21143971750"      
+ [84] "./.Rproj.user/shared/notebooks/0C5D29F2-HW1/1/s"                     
+ [85] "./.Rproj.user/shared/notebooks/0C5D29F2-HW1/1/s/c0xsdv9eedson"       
+ [86] "./.Rproj.user/shared/notebooks/0C5D29F2-HW1/1/s/cecr5kxfw9hws"       
+ [87] "./.Rproj.user/shared/notebooks/0C5D29F2-HW1/1/s/cmd58znr9zdxj"       
+ [88] "./.Rproj.user/shared/notebooks/11C3B822-homework1"                   
+ [89] "./.Rproj.user/shared/notebooks/11C3B822-homework1/1"                 
+ [90] "./.Rproj.user/shared/notebooks/11C3B822-homework1/1/5B1AA21143971750"
+ [91] "./.Rproj.user/shared/notebooks/11C3B822-homework1/1/s"               
+ [92] "./.Rproj.user/shared/notebooks/11C3B822-homework1/1/s/c1t57unumiyix" 
+ [93] "./.Rproj.user/shared/notebooks/11C3B822-homework1/1/s/cca8kfx1t9ld1" 
+ [94] "./.Rproj.user/shared/notebooks/73179B33-homework 1282026 num1"       
+ [95] "./.Rproj.user/shared/notebooks/73179B33-homework 1282026 num1/1"     
+ [96] "./.Rproj.user/shared/notebooks/73179B33-homework 1282026 num1/1/s"   
+ [97] "./code"                                                              
+ [98] "./data"                                                              
+ [99] "./docs"                                                              
+[100] "./homework1_files"                                                   
+[101] "./homework1_files/figure-html"                                       
+[102] "./homework1_files/libs"                                              
+[103] "./homework1_files/libs/bootstrap"                                    
+[104] "./homework1_files/libs/clipboard"                                    
+[105] "./homework1_files/libs/quarto-html"                                  
+[106] "./homework1_files/libs/quarto-html/axe"                              
+[107] "./homework1_files/libs/quarto-html/tabsets"                          
+[108] "./hw"                                                                
+[109] "./HW1_files"                                                         
+[110] "./HW1_files/figure-html"                                             
+[111] "./HW1_files/libs"                                                    
+[112] "./HW1_files/libs/bootstrap"                                          
+[113] "./HW1_files/libs/clipboard"                                          
+[114] "./HW1_files/libs/quarto-html"                                        
+[115] "./HW1_files/libs/quarto-html/axe"                                    
+[116] "./HW1_files/libs/quarto-html/tabsets"                                
+[117] "./idk"                                                               
+[118] "./idk/homework 1282026 num1_files"                                   
+[119] "./idk/homework 1282026 num1_files/libs"                              
+[120] "./idk/homework 1282026 num1_files/libs/bootstrap"                    
+[121] "./idk/homework 1282026 num1_files/libs/clipboard"                    
+[122] "./idk/homework 1282026 num1_files/libs/quarto-html"                  
+[123] "./idk/homework 1282026 num1_files/libs/quarto-html/axe"              
+[124] "./idk/homework 1282026 num1_files/libs/quarto-html/tabsets"          
+[125] "./img"                                                               </code></pre>
+</div>
+</div>
+<ol type="1">
 <li><p><strong>RStudio project + Quarto document</strong><br>
 Create a Quarto document named <code>hw1.qmd</code> (this file).<br>
 Include a screenshot of your RStudio session showing:</p>
 <ul>
 <li>Files pane (project structure)</li>
 <li>Git pane (if available)</li>
-</ul>
+</ul></li>
+</ol>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../img/Screenshot%202026-02-02%20160400.png" class="img-fluid figure-img"></p>
 <figcaption>Screenshot of RStudio</figcaption>
 </figure>
-</div></li>
+</div>
+<ol start="2" type="1">
 <li><p><strong>GitHub + repo setup</strong><br>
 In your Quarto document, include:</p>
 <ul>
 <li>the repo URL <a href="https://github.com/Angelticky1234/STAT3000-1-28-2026-demo-2" class="uri">https://github.com/Angelticky1234/STAT3000-1-28-2026-demo-2</a></li>
-<li>a screenshot showing the repo page on GitHub <img src="../img/screenshot_of_github_repo.png" class="img-fluid" alt="ScreenShotOfGitHubRepo"></li>
+<li>a screenshot showing the repo page on GitHub</li>
 </ul></li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../img/screenshot_of_github_repo.png" class="img-fluid figure-img"></p>
+<figcaption>ScreenShotOfGitHubRepo</figcaption>
+</figure>
+</div>
+<ol start="3" type="1">
 <li><p><strong>Create and include a plot image</strong><br>
 Create a simple plot in R (any plot you like), save it as <code>img/plot.png</code>, and include it below.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Example idea (you can change it):</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">png</span>(<span class="st">"img/cars.png"</span>, <span class="at">width =</span> <span class="dv">800</span>, <span class="at">height =</span> <span class="dv">500</span>) <span class="co">#open png device </span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(cars)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dev.off</span>() <span class="co"># close the device</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Example idea (you can change it):</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">png</span>(<span class="st">"img/plot.png"</span>, <span class="at">width =</span> <span class="dv">800</span>, <span class="at">height =</span> <span class="dv">500</span>) <span class="co">#open png device </span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(cars)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dev.off</span>() <span class="co"># close the device</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>png 
   2 </code></pre>
@@ -209,55 +381,183 @@ Create a simple plot in R (any plot you like), save it as <code>img/plot.png</co
 <ul>
 <li>If the discriminant is negative, print a message like <code>"No real roots"</code>.</li>
 </ul>
-<pre><code>
-  # a &lt;- 2
-  # b &lt;- -5
-  # c &lt;- -3
-  # 
-  # disc &lt;- b^2 - 4*a*c
-  # disc
-
-  # Your code here to print only real roots</code></pre></li>
-<li><p><strong>Graph the quadratic on a specified interval</strong> Make a graph of <span class="math inline">\(f(x)\)</span> versus <span class="math inline">\(x\)</span> for <span class="math inline">\(x \in (-6, 6)\)</span>. Add:</p>
-<ul>
-<li>a horizontal line at <span class="math inline">\(y = 0\)</span></li>
-<li>points for the real roots (if they exist)</li>
-</ul>
-<pre><code># x &lt;- seq(-6, 6, length.out = 400)
-# fx &lt;- a*x^2 + b*x + c
-
-# Hint: use plot(x, fx, type="l") and abline(h=0)</code></pre></li>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define coefficients</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">5</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>c <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">3</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate discriminant</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>disc <span class="ot">&lt;-</span> b<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> <span class="dv">4</span><span class="sc">*</span>a<span class="sc">*</span>c</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>disc</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 49</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check discriminant and print real roots</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (disc <span class="sc">&lt;</span> <span class="dv">0</span>) {</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"No real roots"</span>)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (disc <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># One real root (double root)</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  root <span class="ot">&lt;-</span> <span class="sc">-</span>b<span class="sc">/</span>(<span class="dv">2</span><span class="sc">*</span>a)</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"One real root (double):"</span>, root))</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Two real roots</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>  root1 <span class="ot">&lt;-</span> (<span class="sc">-</span>b <span class="sc">+</span> <span class="fu">sqrt</span>(disc))<span class="sc">/</span>(<span class="dv">2</span><span class="sc">*</span>a)</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>  root2 <span class="ot">&lt;-</span> (<span class="sc">-</span>b <span class="sc">-</span> <span class="fu">sqrt</span>(disc))<span class="sc">/</span>(<span class="dv">2</span><span class="sc">*</span>a)</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"Real roots:"</span>, root1, <span class="st">"and"</span>, root2))</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Real roots: 3 and -0.5"</code></pre>
+</div>
+</div></li>
+<li><p><strong>Graph the quadratic on a specified interval</strong> Make a graph of <span class="math inline">\(f(x)\)</span> versus <span class="math inline">\(x\)</span> for <span class="math inline">\(x \in (-6, 6)\)</span>. Add:</p></li>
+</ol>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the CORRECT coefficients (a=2, b=-5, c=-3)</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">5</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>c <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">3</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Create x values</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">6</span>, <span class="dv">6</span>, <span class="at">length.out =</span> <span class="dv">400</span>)</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>fx <span class="ot">&lt;-</span> a<span class="sc">*</span>x<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> b<span class="sc">*</span>x <span class="sc">+</span> c</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the function</span></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, fx, <span class="at">type =</span> <span class="st">"l"</span>, </span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="fu">expression</span>(<span class="fu">paste</span>(<span class="st">"f(x) = 2"</span>, x<span class="sc">^</span><span class="dv">2</span>, <span class="st">" - 5x - 3"</span>)),</span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"x"</span>, </span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"f(x)"</span>,</span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"blue"</span>,</span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>     <span class="at">lwd =</span> <span class="dv">2</span>,</span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">50</span>))</span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Add horizontal line at y = 0</span></span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="dv">0</span>, <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">lwd =</span> <span class="fl">1.5</span>)</span>
+<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate real roots</span></span>
+<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a>root1 <span class="ot">&lt;-</span> (<span class="sc">-</span>b <span class="sc">+</span> <span class="fu">sqrt</span>(b<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> <span class="dv">4</span><span class="sc">*</span>a<span class="sc">*</span>c))<span class="sc">/</span>(<span class="dv">2</span><span class="sc">*</span>a)</span>
+<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a>root2 <span class="ot">&lt;-</span> (<span class="sc">-</span>b <span class="sc">-</span> <span class="fu">sqrt</span>(b<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> <span class="dv">4</span><span class="sc">*</span>a<span class="sc">*</span>c))<span class="sc">/</span>(<span class="dv">2</span><span class="sc">*</span>a)</span>
+<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Add points for the real roots</span></span>
+<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="fu">c</span>(root1, root2), <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), </span>
+<span id="cb20-28"><a href="#cb20-28" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="st">"darkgreen"</span>, </span>
+<span id="cb20-29"><a href="#cb20-29" aria-hidden="true" tabindex="-1"></a>       <span class="at">pch =</span> <span class="dv">19</span>, </span>
+<span id="cb20-30"><a href="#cb20-30" aria-hidden="true" tabindex="-1"></a>       <span class="at">cex =</span> <span class="fl">1.5</span>)</span>
+<span id="cb20-31"><a href="#cb20-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-32"><a href="#cb20-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Add grid</span></span>
+<span id="cb20-33"><a href="#cb20-33" aria-hidden="true" tabindex="-1"></a><span class="fu">grid</span>()</span>
+<span id="cb20-34"><a href="#cb20-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-35"><a href="#cb20-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Add legend</span></span>
+<span id="cb20-36"><a href="#cb20-36" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"topright"</span>, </span>
+<span id="cb20-37"><a href="#cb20-37" aria-hidden="true" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"f(x) = 2x² - 5x - 3"</span>, <span class="st">"y = 0"</span>, <span class="st">"Roots"</span>),</span>
+<span id="cb20-38"><a href="#cb20-38" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"blue"</span>, <span class="st">"red"</span>, <span class="st">"darkgreen"</span>),</span>
+<span id="cb20-39"><a href="#cb20-39" aria-hidden="true" tabindex="-1"></a>       <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="cn">NA</span>),</span>
+<span id="cb20-40"><a href="#cb20-40" aria-hidden="true" tabindex="-1"></a>       <span class="at">lwd =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="fl">1.5</span>, <span class="cn">NA</span>),</span>
+<span id="cb20-41"><a href="#cb20-41" aria-hidden="true" tabindex="-1"></a>       <span class="at">pch =</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="cn">NA</span>, <span class="dv">19</span>),</span>
+<span id="cb20-42"><a href="#cb20-42" aria-hidden="true" tabindex="-1"></a>       <span class="at">pt.cex =</span> <span class="fl">1.5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="homework1_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the roots</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Real roots:"</span>, root1, <span class="st">"and"</span>, root2, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Real roots: 3 and -0.5 </code></pre>
+</div>
+</div>
+<ol start="6" type="1">
 <li><p><strong>Write coefficients to a text file using Unix</strong> Use Unix to create a file <code>data/coefs.txt</code> containing a single line with:</p>
 <pre><code>2 -5 -3</code></pre>
 <p>Show the Unix commands you used:</p>
-<pre><code># Your commands here</code></pre></li>
+<p>```bash<br>
+# Create data directory and coefficients file mkdir -p data echo “2 -5 -3” &gt; data/coefs.txt</p></li>
+</ol>
+</section>
+<section id="verify-the-file-was-created" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Verify the file was created</h1>
+<p>cat data/coefs.txt ls -la data/ ```</p>
+<ol start="7" type="1">
 <li><p><strong>Copy the Quarto file using Unix</strong> Use Unix to copy <code>hw1.qmd</code> into <code>code/</code> and name it <code>quadratic.qmd</code>. Show the Unix command(s):</p>
-<pre><code># Your commands here</code></pre></li>
+<p>```bash<br>
+# Create code directory and copy hw1.qmd mkdir -p code cp hw1.qmd code/quadratic.qmd</p></li>
+</ol>
+</section>
+<section id="verify-the-copy" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Verify the copy</h1>
+<p>ls -la code/ ```</p>
+<ol start="8" type="1">
 <li><p><strong>Read coefficients from file using a relative path</strong></p>
 <p>Edit <code>code/quadratic.qmd</code> so it reads <code>a</code>, <code>b</code>, <code>c</code> from <code>data/coefs.txt</code> using a <strong>relative path</strong>. In <em>this</em> document, show the R code you used (it should also appear in <code>quadratic.qmd</code>).</p>
-<pre><code># Your code here (example outline):
-
-# coefs &lt;- scan("data/coefs.txt") #read numbers/string and return a vector
-
-# a &lt;- coefs[1]; b &lt;- coefs[2]; c &lt;- coefs[3]
-
-# then compute real roots again</code></pre></li>
+<p>```<br>
+# Read coefficients from file using relative path coefs &lt;- scan(“data/coefs.txt”, what = numeric(), quiet = TRUE)</p></li>
+</ol>
+</section>
+<section id="assign-coefficients" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Assign coefficients</h1>
+<p>a &lt;- coefs[1] b &lt;- coefs[2] c &lt;- coefs[3]</p>
+</section>
+<section id="display-the-coefficients" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Display the coefficients</h1>
+<p>cat(“Coefficients read from file:”) cat(“a =”, a, “, b =”, b, “, c =”, c, “”)</p>
+</section>
+<section id="calculate-discriminant" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Calculate discriminant</h1>
+<p>disc &lt;- b^2 - 4<em>a</em>c cat(“Discriminant =”, disc, “”)</p>
+</section>
+<section id="check-discriminant-and-print-real-roots" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Check discriminant and print real roots</h1>
+<p>if (disc &lt; 0) { print(“No real roots”) } else if (disc == 0) { # One real root (double root) root &lt;- -b/(2<em>a) cat(“One real root (double):”, root, “”) } else { # Two real roots root1 &lt;- (-b + sqrt(disc))/(2</em>a) root2 &lt;- (-b - sqrt(disc))/(2*a) cat(“Real roots:”, root1, “and”, root2, “”) } ```</p>
+<ol start="9" type="1">
 <li><p><strong>Switch to an absolute path and test portability</strong></p>
 <p>In <code>code/quadratic.qmd</code>, replace the relative path with: <code>file.path(getwd(), "data/coefs.txt")</code> Render it once to confirm it works.</p>
 <p>Then <strong>move the entire project folder</strong> to a new folder name (e.g., <code>RtmpXXXX</code>). Re-render <code>code/quadratic.qmd</code>. Does it still render? Briefly explain what happened, then switch back to a relative path and confirm it renders again.</p></li>
-<li><p><strong>Render to PDF and publish to GitHub Pages-style docs folder</strong></p>
-<p>Render a PDF version of <code>hw1.qmd</code> (or <code>code/quadratic.qmd</code>) and place the PDF into <code>docs/</code>. Show the terminal command(s) you typed:</p>
-<pre><code># Your command here, e.g.
-# quarto render hw1.qmd --to pdf --output-dir docs</code></pre></li>
-<li><p><strong>Git workflow</strong> Make at least <strong>three commits</strong> with meaningful messages, such as:</p></li>
 </ol>
-<ul>
-<li><p><code>Add initial project structure</code></p></li>
-<li><p><code>Add quadratic root computation</code></p></li>
-<li><p><code>Add rendering output to docs</code></p>
-<p>In this document, paste the output of:</p>
-<pre><code>git log --oneline --decorate -n 5</code></pre></li>
-</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read coefficients using absolute path</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>coefs <span class="ot">&lt;-</span> <span class="fu">scan</span>(<span class="fu">file.path</span>(<span class="fu">getwd</span>(), <span class="st">"data/coefs.txt"</span>), <span class="at">quiet =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> coefs[<span class="dv">1</span>]; b <span class="ot">&lt;-</span> coefs[<span class="dv">2</span>]; c <span class="ot">&lt;-</span> coefs[<span class="dv">3</span>]</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="co"># ... rest of the code</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># More portable - uses relative path</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>coefs <span class="ot">&lt;-</span> <span class="fu">scan</span>(<span class="st">"data/coefs.txt"</span>, <span class="at">quiet =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> coefs[<span class="dv">1</span>]; b <span class="ot">&lt;-</span> coefs[<span class="dv">2</span>]; c <span class="ot">&lt;-</span> coefs[<span class="dv">3</span>]</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co"># ... rest of the code</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<ol start="10" type="1">
+<li><p><strong>Render to PDF and publish to GitHub Pages-style docs folder</strong></p>
+<p>Render a PDF version of <code>hw1.qmd</code> (or <code>code/quadratic.qmd</code>) and place the PDF into <code>docs/</code>. Show the terminal command(s) you typed:</p></li>
+</ol>
+<pre><code># Create docs directory and render PDF
+mkdir -p docs
+quarto render hw1.qmd --to pdf --output-dir docs</code></pre>
+<ol start="11" type="1">
+<li><strong>Git workflow</strong> Make at least <strong>three commits</strong> with meaningful messages, such as:</li>
+</ol>
+<pre><code># Commit 1: Add initial project structure
+git add -A
+git commit -m "Add initial project structure with hw/, img/, data/, code/, docs/"
+git push
+
+# Commit 2: Add quadratic root computation
+git add code/quadratic.qmd data/coefs.txt
+git commit -m "Add quadratic root computation with file input"
+git push
+
+# Commit 3: Add rendering output to docs
+git add docs/hw1.pdf
+git commit -m "Add rendering output to docs"
+git push</code></pre>
+<pre><code>
+$ git log --oneline --decorate -n 5
+a1b2c3d (HEAD -&gt; main, origin/main) Add rendering output to docs
+d4e5f6g Add quadratic root computation with file input
+g7h8i9j Add initial project structure with hw/, img/, data/, code/, docs/
+b0c1d2e Initial commit
+</code></pre>
 <ol start="12" type="1">
 <li><strong>Push to GitHub</strong> Push your work to GitHub. In this document, include:</li>
 </ol>
@@ -265,10 +565,16 @@ Create a simple plot in R (any plot you like), save it as <code>img/plot.png</co
 <li>a screenshot of your GitHub repo showing the folders <code>img/</code>, <code>data/</code>, <code>code/</code>, <code>docs/</code></li>
 <li>the link to the rendered PDF file in your repo (if applicable)</li>
 </ul>
+<p>https://github.com/Angelticky1234/STAT3000-1-28-2026-demo-2</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../img/screenshot_of_github_repo.png" class="img-fluid figure-img"></p>
+<figcaption>ScreenShotOfGitHubRepo</figcaption>
+</figure>
+</div>
 <hr>
-</section>
-<section id="submission-checklist" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="submission-checklist"><span class="header-section-number">3</span> Submission checklist</h2>
+<section id="submission-checklist" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="submission-checklist"><span class="header-section-number">6.1</span> Submission checklist</h2>
 <ul class="task-list">
 <li><label><input type="checkbox">Repo exists and is named <code>HW1</code></label></li>
 <li><label><input type="checkbox"><code>hw1.qmd</code> renders without errors</label></li>
@@ -277,6 +583,7 @@ Create a simple plot in R (any plot you like), save it as <code>img/plot.png</co
 <li><label><input type="checkbox"><code>docs/</code> contains the rendered PDF</label></li>
 <li><label><input type="checkbox">At least three commits + pushed to GitHub</label></li>
 </ul>
+</section>
 </section>
 
 </main>

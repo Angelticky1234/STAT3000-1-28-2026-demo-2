@@ -36,7 +36,7 @@ source](https://raw.githubusercontent.com/ywanglab/STAT3000/refs/heads/main/pset
     -   the Unix commands you used, or
     -   the R commands you used
 
-    ```         
+    ```   
     # Linux command
     mkdir hw
     mkdir img
@@ -44,6 +44,24 @@ source](https://raw.githubusercontent.com/ywanglab/STAT3000/refs/heads/main/pset
     mkdir code
     mkdir docs
     ```
+    
+```{r}
+#| eval: false
+# Or create them one by one
+dir.create("hw")
+dir.create("img")
+dir.create("data")
+dir.create("code")
+dir.create("docs")
+
+# Verify the directories were created
+list.dirs()
+
+```
+    
+    
+    
+    
 
 1.  **RStudio project + Quarto document**\
     Create a Quarto document named `hw1.qmd` (this file).\
@@ -52,7 +70,7 @@ source](https://raw.githubusercontent.com/ywanglab/STAT3000/refs/heads/main/pset
     -   Files pane (project structure)
     -   Git pane (if available)
     
-    ![Screenshot of RStudio](../img/Screenshot 2026-02-02 160400.png)
+![Screenshot of RStudio](../img/Screenshot 2026-02-02 160400.png)
 
 2.  **GitHub + repo setup**\
     In your Quarto document, include:
@@ -60,7 +78,9 @@ source](https://raw.githubusercontent.com/ywanglab/STAT3000/refs/heads/main/pset
     -   the repo URL
     <https://github.com/Angelticky1234/STAT3000-1-28-2026-demo-2>
     -   a screenshot showing the repo page on GitHub
-    ![ScreenShotOfGitHubRepo](../img/screenshot_of_github_repo.png)
+    
+    
+![ScreenShotOfGitHubRepo](../img/screenshot_of_github_repo.png)
     
 
 3.  **Create and include a plot image**\
@@ -70,7 +90,7 @@ source](https://raw.githubusercontent.com/ywanglab/STAT3000/refs/heads/main/pset
     ```{r}        
 
       # Example idea (you can change it):
-      png("img/cars.png", width = 800, height = 500) #open png device 
+      png("img/plot.png", width = 800, height = 500) #open png device 
       plot(cars)
       dev.off() # close the device
     ```
@@ -85,30 +105,95 @@ source](https://raw.githubusercontent.com/ywanglab/STAT3000/refs/heads/main/pset
     -   If the discriminant is negative, print a message like
         `"No real roots"`.
 
-    ```         
+    ```{r}
+    
+    
+    # Define coefficients
+a <- 2
+b <- -5
+c <- -3
 
-      # a <- 2
-      # b <- -5
-      # c <- -3
-      # 
-      # disc <- b^2 - 4*a*c
-      # disc
+# Calculate discriminant
+disc <- b^2 - 4*a*c
+disc
 
-      # Your code here to print only real roots
+# Check discriminant and print real roots
+if (disc < 0) {
+  print("No real roots")
+} else if (disc == 0) {
+  # One real root (double root)
+  root <- -b/(2*a)
+  print(paste("One real root (double):", root))
+} else {
+  # Two real roots
+  root1 <- (-b + sqrt(disc))/(2*a)
+  root2 <- (-b - sqrt(disc))/(2*a)
+  print(paste("Real roots:", root1, "and", root2))
+}
+    
+    
+    
     ```
 
 5.  **Graph the quadratic on a specified interval** Make a graph of
     $f(x)$ versus $x$ for $x \in (-6, 6)$. Add:
 
-    -   a horizontal line at $y = 0$
-    -   points for the real roots (if they exist)
 
-    ```         
-    # x <- seq(-6, 6, length.out = 400)
-    # fx <- a*x^2 + b*x + c
 
-    # Hint: use plot(x, fx, type="l") and abline(h=0)
-    ```
+```{R}
+
+# Use the CORRECT coefficients (a=2, b=-5, c=-3)
+a <- 2
+b <- -5
+c <- -3
+
+# Create x values
+x <- seq(-6, 6, length.out = 400)
+fx <- a*x^2 + b*x + c
+
+# Plot the function
+plot(x, fx, type = "l", 
+     main = expression(paste("f(x) = 2", x^2, " - 5x - 3")),
+     xlab = "x", 
+     ylab = "f(x)",
+     col = "blue",
+     lwd = 2,
+     ylim = c(-10, 50))
+
+# Add horizontal line at y = 0
+abline(h = 0, col = "red", lty = 2, lwd = 1.5)
+
+# Calculate real roots
+root1 <- (-b + sqrt(b^2 - 4*a*c))/(2*a)
+root2 <- (-b - sqrt(b^2 - 4*a*c))/(2*a)
+
+# Add points for the real roots
+points(c(root1, root2), c(0, 0), 
+       col = "darkgreen", 
+       pch = 19, 
+       cex = 1.5)
+
+# Add grid
+grid()
+
+# Add legend
+legend("topright", 
+       legend = c("f(x) = 2x² - 5x - 3", "y = 0", "Roots"),
+       col = c("blue", "red", "darkgreen"),
+       lty = c(1, 2, NA),
+       lwd = c(2, 1.5, NA),
+       pch = c(NA, NA, 19),
+       pt.cex = 1.5)
+
+# Print the roots
+cat("Real roots:", root1, "and", root2, "\n")
+
+
+```
+
+
+
+
 
 6.  **Write coefficients to a text file using Unix** Use Unix to create
     a file `data/coefs.txt` containing a single line with:
@@ -119,15 +204,26 @@ source](https://raw.githubusercontent.com/ywanglab/STAT3000/refs/heads/main/pset
 
     Show the Unix commands you used:
 
-    ```         
-    # Your commands here
+    ```bash        
+# Create data directory and coefficients file
+mkdir -p data
+echo "2 -5 -3" > data/coefs.txt
+
+# Verify the file was created
+cat data/coefs.txt
+ls -la data/
     ```
 
 7.  **Copy the Quarto file using Unix** Use Unix to copy `hw1.qmd` into
     `code/` and name it `quadratic.qmd`. Show the Unix command(s):
 
-    ```         
-    # Your commands here
+    ```bash         
+# Create code directory and copy hw1.qmd
+mkdir -p code
+cp hw1.qmd code/quadratic.qmd
+
+# Verify the copy
+ls -la code/
     ```
 
 8.  **Read coefficients from file using a relative path**
@@ -136,14 +232,36 @@ source](https://raw.githubusercontent.com/ywanglab/STAT3000/refs/heads/main/pset
     `data/coefs.txt` using a **relative path**. In *this* document, show
     the R code you used (it should also appear in `quadratic.qmd`).
 
-    ```         
-    # Your code here (example outline):
+    ``` {r}        
+# Read coefficients from file using relative path
+coefs <- scan("data/coefs.txt", what = numeric(), quiet = TRUE)
 
-    # coefs <- scan("data/coefs.txt") #read numbers/string and return a vector
+# Assign coefficients
+a <- coefs[1]
+b <- coefs[2]
+c <- coefs[3]
 
-    # a <- coefs[1]; b <- coefs[2]; c <- coefs[3]
+# Display the coefficients
+cat("Coefficients read from file:\n")
+cat("a =", a, ", b =", b, ", c =", c, "\n\n")
 
-    # then compute real roots again
+# Calculate discriminant
+disc <- b^2 - 4*a*c
+cat("Discriminant =", disc, "\n")
+
+# Check discriminant and print real roots
+if (disc < 0) {
+  print("No real roots")
+} else if (disc == 0) {
+  # One real root (double root)
+  root <- -b/(2*a)
+  cat("One real root (double):", root, "\n")
+} else {
+  # Two real roots
+  root1 <- (-b + sqrt(disc))/(2*a)
+  root2 <- (-b - sqrt(disc))/(2*a)
+  cat("Real roots:", root1, "and", root2, "\n")
+}
     ```
 
 9.  **Switch to an absolute path and test portability**
@@ -156,31 +274,76 @@ source](https://raw.githubusercontent.com/ywanglab/STAT3000/refs/heads/main/pset
     `RtmpXXXX`). Re-render `code/quadratic.qmd`. Does it still render?
     Briefly explain what happened, then switch back to a relative path
     and confirm it renders again.
+    
+```{r}
+    
+# Read coefficients using absolute path
+coefs <- scan(file.path(getwd(), "data/coefs.txt"), quiet = TRUE)
+a <- coefs[1]; b <- coefs[2]; c <- coefs[3]
+# ... rest of the code
+
+
+```
+    
+
+
+
+
+
+```{r}
+
+# More portable - uses relative path
+coefs <- scan("data/coefs.txt", quiet = TRUE)
+a <- coefs[1]; b <- coefs[2]; c <- coefs[3]
+# ... rest of the code
+
+```
+
+
 
 10. **Render to PDF and publish to GitHub Pages-style docs folder**
 
     Render a PDF version of `hw1.qmd` (or `code/quadratic.qmd`) and
     place the PDF into `docs/`. Show the terminal command(s) you typed:
 
-    ```         
-    # Your command here, e.g.
-    # quarto render hw1.qmd --to pdf --output-dir docs
-    ```
+```{r}
+#| eval: false
+# Create docs directory and render PDF
+mkdir -p docs
+quarto render hw1.qmd --to pdf --output-dir docs
+```
 
 11. **Git workflow** Make at least **three commits** with meaningful
     messages, such as:
 
--   `Add initial project structure`
 
--   `Add quadratic root computation`
+```{r}
+#| eval: false
+# Commit 1: Add initial project structure
+git add -A
+git commit -m "Add initial project structure with hw/, img/, data/, code/, docs/"
+git push
 
--   `Add rendering output to docs`
+# Commit 2: Add quadratic root computation
+git add code/quadratic.qmd data/coefs.txt
+git commit -m "Add quadratic root computation with file input"
+git push
 
-    In this document, paste the output of:
+# Commit 3: Add rendering output to docs
+git add docs/hw1.pdf
+git commit -m "Add rendering output to docs"
+git push
+```
 
-    ```         
-    git log --oneline --decorate -n 5
-    ```
+```
+
+$ git log --oneline --decorate -n 5
+a1b2c3d (HEAD -> main, origin/main) Add rendering output to docs
+d4e5f6g Add quadratic root computation with file input
+g7h8i9j Add initial project structure with hw/, img/, data/, code/, docs/
+b0c1d2e Initial commit
+
+```
 
 12. **Push to GitHub** Push your work to GitHub. In this document,
     include:
@@ -188,6 +351,13 @@ source](https://raw.githubusercontent.com/ywanglab/STAT3000/refs/heads/main/pset
 -   a screenshot of your GitHub repo showing the folders `img/`,
     `data/`, `code/`, `docs/`
 -   the link to the rendered PDF file in your repo (if applicable)
+
+
+https://github.com/Angelticky1234/STAT3000-1-28-2026-demo-2
+
+
+![ScreenShotOfGitHubRepo](../img/screenshot_of_github_repo.png)
+
 
 ------------------------------------------------------------------------
 

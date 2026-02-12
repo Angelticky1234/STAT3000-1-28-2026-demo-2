@@ -80,3 +80,47 @@ plot(x, fx, type="l")
 abline(h=0)
 
 ```
+
+```{r}
+
+8.  **Read coefficients from file using a relative path**
+
+    Edit `code/quadratic.qmd` so it reads `a`, `b`, `c` from
+    `data/coefs.txt` using a **relative path**. In *this* document, show
+    the R code you used (it should also appear in `quadratic.qmd`).
+
+    ``` {r}        
+# Read coefficients from file using relative path
+coefs <- scan("data/coefs.txt", what = numeric(), quiet = TRUE)
+
+# Assign coefficients
+a <- coefs[1]
+b <- coefs[2]
+c <- coefs[3]
+
+# Display the coefficients
+cat("Coefficients read from file:\n")
+cat("a =", a, ", b =", b, ", c =", c, "\n\n")
+
+# Calculate discriminant
+disc <- b^2 - 4*a*c
+cat("Discriminant =", disc, "\n")
+
+# Check discriminant and print real roots
+if (disc < 0) {
+  print("No real roots")
+} else if (disc == 0) {
+  # One real root (double root)
+  root <- -b/(2*a)
+  cat("One real root (double):", root, "\n")
+} else {
+  # Two real roots
+  root1 <- (-b + sqrt(disc))/(2*a)
+  root2 <- (-b - sqrt(disc))/(2*a)
+  cat("Real roots:", root1, "and", root2, "\n")
+}
+    ```
+
+
+```
+
